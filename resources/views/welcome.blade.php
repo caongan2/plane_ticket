@@ -111,7 +111,7 @@
                                         <fieldset>
                                             <label for="return">Hành lí ký gửi (xách tay 7kg)</label>
                                                 <select name='package' class="form-control date package">
-                                                    <option value="">Chọn cân nặng hành lí mang theo của bạn</option>
+                                                    <option value="Không đăng ký hành lý">Chọn cân nặng hành lí mang theo của bạn</option>
                                                     <option value="15">15 kg</option>
                                                     <option value="20">20 kg</option>
                                                     <option value="25">25 kg</option>

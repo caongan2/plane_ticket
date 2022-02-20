@@ -9,5 +9,5 @@
     <p>Vé người lớn: {{ $data['amount_adults'] }}</p> <br>
     <p>Vé trẻ em dưới 12 tuổi: {{ $data['amount_children_less_12'] }}</p> <br>
     <p>Vé trẻ em dưới 2 tuổi: {{ $data['amount_children_less_2'] }}</p> <br>
-    <p>Hành lí ký gửi: {{$data['package']}} kg</p>
+    <p>Hành lí ký gửi: {{$data['package']}} (kg) </p>
 </div>

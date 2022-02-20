@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('amount_adults')->nullable();
             $table->integer('amount_children_less_12')->nullable();
             $table->integer('amount_children_less_2')->nullable();
-            $table->integer('package')->nullable();
+            $table->text('package')->nullable();
             $table->timestamps();
         });
     }
