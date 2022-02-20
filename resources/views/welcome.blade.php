@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-5 col-md-offset-1 screen-pc screen-mobile">
                 @if(session()->has('success'))
-                <p class="form-control" style="background: #008000; color: white">{{session('success')}}</p>
+                <p class="form-control screen-mobile" style="background: #008000; color: white">{{session('success')}}</p>
                 @endif
                 <section id="first-tab-group" class="tabgroup">
                     <div id="tab1">
@@ -80,13 +80,13 @@
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="departure">Ngày xuất phát:</label>
-                                            <input name="departure_date" type="text" class="form-control date" id="deparure" placeholder="Nhập ngày bạn muốn xuất phát" required onchange='this.form.()'>
+                                            <input name="departure_date" type="date" class="form-control date" id="deparure" placeholder="Nhập ngày bạn muốn xuất phát" required onchange='this.form.()'>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="return">Ngày về:</label>
-                                            <input name="return_date" type="text" class="form-control date" id="return" placeholder="Để trống nếu bạn chọn vé một chiều" onchange='this.form.()'>
+                                            <input name="return_date" type="date" class="form-control date" id="return" placeholder="Để trống nếu bạn chọn vé một chiều" onchange='this.form.()'>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
@@ -236,6 +236,7 @@
     @media only screen and (max-width: 844px){
         .screen-mobile{
             width: 100%;
+            height: auto;
         }
     }
 </style>
