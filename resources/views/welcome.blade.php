@@ -42,9 +42,6 @@
 <section class="banner" id="top">
     <div class="container">
         <div class="row">
-{{--            <div class="col-md-5" style="width: 30%">--}}
-{{--                <img src="img/img.png" style="height: 600px" alt="">--}}
-{{--            </div>--}}
             <div class="col-md-5 col-md-offset-1 screen-pc screen-mobile">
                 @if(session()->has('success'))
                 <p class="form-control" style="background: #008000; color: white">{{session('success')}}</p>
@@ -114,7 +111,7 @@
                                         <fieldset>
                                             <label for="return">Hành lí ký gửi (xách tay 7kg)</label>
                                             <label>
-                                                <select required name='package' class="form-control date" onchange='this.form.()'>
+                                                <select name='package' class="form-control date" onchange='this.form.()'>
                                                     <option value="">Chọn cân nặng hành lí mang theo của bạn</option>
                                                     <option value="15">15 kg</option>
                                                     <option value="20">20 kg</option>

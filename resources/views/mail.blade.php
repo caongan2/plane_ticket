@@ -1,4 +1,3 @@
-~~  resources/views/mails/mail-notify  ~~
 <div>
     <h2>{{ $data['content'] }}</h2>
     <p>Tên khách hàng: {{ $data['user_name'] }}</p> <br>
