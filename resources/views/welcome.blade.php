@@ -5,6 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+    />
     <!--
 
     Template 2093 Flight
@@ -41,7 +45,7 @@
 {{--            <div class="col-md-5" style="width: 30%">--}}
 {{--                <img src="img/img.png" style="height: 600px" alt="">--}}
 {{--            </div>--}}
-            <div class="col-md-5 col-md-offset-1" style="width: 70%">
+            <div class="col-md-5 col-md-offset-1 screen-pc screen-mobile">
                 @if(session()->has('success'))
                 <p class="form-control" style="background: #008000; color: white">{{session('success')}}</p>
                 @endif
@@ -228,3 +232,13 @@
 
 <!-- Mirrored from www.tooplate.com/templates/2093_flight/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 May 2018 10:39:55 GMT -->
 </html>
+<style>
+    .screen-pc{
+        width: 100%;
+    }
+    @media only screen and (max-width: 844px){
+        .screen-mobile{
+            width: 100%;
+        }
+    }
+</style>
