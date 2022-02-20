@@ -16,6 +16,8 @@ class TicketFactory extends Factory
      */
     public function definition()
     {
+        $category = [1,2];
+        $status = [0,1];
         return [
             'user_name' => $this->faker->name(),
             'number_phone' => $this->faker->numberBetween(),
@@ -23,11 +25,11 @@ class TicketFactory extends Factory
             'to' => 'Hồ Chí Minh',
             'departure_date' => $this->faker->date(),
             'return_date' => $this->faker->date(),
-            'amount_adults' => $this->faker->numberBetween(),
-            'amount_children_less_12' => $this->faker->numberBetween(),
-            'amount_children_less_2' => $this->faker->numberBetween(),
+            'amount_adults' => $this->faker->randomElement($category),
+            'amount_children_less_12' => $this->faker->randomElement($category),
+            'amount_children_less_2' => $this->faker->randomElement($category),
             'package' => $this->faker->numberBetween(),
-            'status' => 0,
+            'status' => $this->faker->randomElement($status),
         ];
     }
 }
