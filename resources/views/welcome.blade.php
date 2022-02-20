@@ -74,44 +74,44 @@
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="to">Nơi đến:</label>
-                                            <input type="text" name="to" class="form-control date" placeholder="Nhập điểm đến của bạn... ">
+                                            <input type="text" name="to" class="form-control date" placeholder="Nhập nơi đến của bạn... ">
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="departure">Ngày xuất phát:</label>
-                                            <input name="departure_date" type="date" class="form-control date" id="deparure" placeholder="Nhập ngày bạn muốn xuất phát" required onchange='this.form.()'>
+                                            <input name="departure_date" type="date" class="form-control date" id="departure" placeholder="Nhập ngày bạn muốn xuất phát" required >
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="return">Ngày về (để trống nếu bạn chọn vé một chiều):</label>
-                                            <input name="return_date" type="date" class="form-control date" id="return" placeholder="Để trống nếu bạn chọn vé một chiều" onchange='this.form.()'>
+                                            <input name="return_date" type="date" class="form-control date" id="return" placeholder="Để trống nếu bạn chọn vé một chiều">
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="return">Số lượng vé người lớn:</label>
-                                            <input name="amount_adults" type="number" class="form-control date" id="return" placeholder="..." onchange='this.form.()'>
+                                            <input name="amount_adults" type="number" class="form-control date" id="return" placeholder="...">
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="return">Số lượng vé trẻ em dưới 12 tuổi:</label>
-                                            <input name="amount_children_less_12" type="number" class="form-control date" id="return" placeholder="..." onchange='this.form.()'>
+                                            <input name="amount_children_less_12" type="number" class="form-control date" id="return" placeholder="...">
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="return">Số lượng vé trẻ em dưới 2 tuổi:</label>
-                                            <input name="amount_children_less_2" type="number" class="form-control date" id="return" placeholder="..." onchange='this.form.()'>
+                                            <input name="amount_children_less_2" type="number" class="form-control date" id="return" placeholder="...">
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="return">Hành lí ký gửi (xách tay 7kg)</label>
                                             <label>
-                                                <select name='package' class="form-control date" onchange='this.form.()'>
+                                                <select name='package' class="form-control date">
                                                     <option value="">Chọn cân nặng hành lí mang theo của bạn</option>
                                                     <option value="15">15 kg</option>
                                                     <option value="20">20 kg</option>
@@ -175,7 +175,6 @@
     </div>
 </footer>
 
-
 <script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
@@ -201,11 +200,6 @@
         $('.scroll-top').on('click', function(event) {
             event.preventDefault();
             $('html, body').animate({scrollTop:0}, 'slow');
-        });
-        // mobile nav toggle
-        $('#nav-toggle').on('click', function (event) {
-            event.preventDefault();
-            $('#main-nav').toggleClass("open");
         });
     });
     // scroll function
