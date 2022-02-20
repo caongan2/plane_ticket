@@ -49,7 +49,7 @@ class BuyTicketController extends Controller
             'amount_children_less_2' => $request->amount_children_less_2,
             'package' => $request->package
         ];
-        $user = 'caothuongnguon@gmail.com';
+        $user = 'caothuongngan@gmail.com';
         SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
         return redirect()->back();
     }
