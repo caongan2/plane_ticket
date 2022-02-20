@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset>
-                                            <label for="return">Ngày về:</label>
+                                            <label for="return">Ngày về (để trống nếu bạn chọn vé một chiều):</label>
                                             <input name="return_date" type="date" class="form-control date" id="return" placeholder="Để trống nếu bạn chọn vé một chiều" onchange='this.form.()'>
                                         </fieldset>
                                     </div>
