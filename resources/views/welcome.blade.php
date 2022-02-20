@@ -110,8 +110,7 @@
                                     <div class="col-md-6">
                                         <fieldset>
                                             <label for="return">Hành lí ký gửi (xách tay 7kg)</label>
-                                            <label>
-                                                <select name='package' class="form-control date">
+                                                <select name='package' class="form-control date package">
                                                     <option value="">Chọn cân nặng hành lí mang theo của bạn</option>
                                                     <option value="15">15 kg</option>
                                                     <option value="20">20 kg</option>
@@ -120,7 +119,6 @@
                                                     <option value="35">35 kg</option>
                                                     <option value="40">40 kg</option>
                                                 </select>
-                                            </label>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-12">
@@ -224,6 +222,9 @@
 <!-- Mirrored from www.tooplate.com/templates/2093_flight/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 May 2018 10:39:55 GMT -->
 </html>
 <style>
+    .package {
+        margin-top: 2.2%;
+    }
     .screen-pc{
         width: 100%;
     }
