@@ -28,7 +28,7 @@ class TicketFactory extends Factory
             'amount_children_less_12' => $this->faker->numberBetween(),
             'amount_children_less_2' => $this->faker->numberBetween(),
             'package' => $this->faker->numberBetween(),
-            'status' => 0,
+            'status' => 1,
         ];
     }
 }
