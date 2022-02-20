@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Jobs\SendEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class BuyTicketController extends Controller
 {
@@ -25,7 +24,7 @@ class BuyTicketController extends Controller
     {
         $data = [
             'user_name' => $request->user_name,
-            'number_phone' => Hash::make($request->number_phone),
+            'number_phone' => $request->number_phone,
             'from' => $request->from,
             'to' => $request->to,
             'departure_date' => $request->departure_date,
