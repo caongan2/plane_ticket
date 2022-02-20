@@ -13,6 +13,21 @@
     <title>Thống kê lịch sử đặt vé</title>
 </head>
 <body>
+<div>
+    <form action="{{route('search')}}" method="get">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="number" class="form-control" name="number_phone" placeholder="Nhập số điện thoại khách hàng...">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
 <table class="table">
     <thead>
     <tr class="text-center">
@@ -34,7 +49,7 @@
     <tbody>
     @foreach($query as $key => $item)
         <tr style="background: @if($item->status == 1) lightskyblue @endif" class="text-center">
-            <th scope="row">{{$item->id}}</th>
+            <th scope="row">{{$key + 1}}</th>
             <td>{{$item->user_name}}</td>
             <td>{{$item->number_phone}}</td>
             <td>{{$item->from}}</td>

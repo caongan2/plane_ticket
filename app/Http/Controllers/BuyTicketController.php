@@ -77,6 +77,14 @@ class BuyTicketController extends Controller
         return redirect()->route('get-all');
     }
 
+    public function search(Request $request)
+    {
+        $query = DB::table('ticket')
+            ->where('number_phone', $request->number_phone)
+            ->get();
+        return view('get-all', compact('query'));
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
