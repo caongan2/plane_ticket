@@ -62,8 +62,7 @@ class BuyTicketController extends Controller
      */
     public function updateStatus($id)
     {
-        $ticket = $this->ticketQuery()->findOrFail($id);
-        $ticket->update(['status' => 1]);
+        Ticket::where('id', $id)->update(['status' => 1]);
         return redirect()->route('get-all');
     }
 
