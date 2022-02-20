@@ -34,7 +34,7 @@
     <tbody>
     @foreach($query as $key => $item)
         <tr style="background: @if($item->status == 1) lightskyblue @endif" class="text-center">
-            <th scope="row">{{$key + 1}}</th>
+            <th scope="row">{{$item->id}}</th>
             <td>{{$item->user_name}}</td>
             <td>{{$item->number_phone}}</td>
             <td>{{$item->from}}</td>

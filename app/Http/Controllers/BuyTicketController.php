@@ -82,7 +82,7 @@ class BuyTicketController extends Controller
      */
     public function getAllTicket()
     {
-        $query = $this->ticketQuery()->orderByDesc('created_at')->get();
+        $query = Ticket::all()->orderByDesc('id')->get();
          return view('get-all', compact('query'));
     }
 
