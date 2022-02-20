@@ -16,12 +16,11 @@ class TicketFactory extends Factory
      */
     public function definition()
     {
-        $status = [0, 2];
         return [
             'user_name' => $this->faker->name(),
             'number_phone' => $this->faker->numberBetween(),
-            'from' => $this->faker->text(),
-            'to' => $this->faker->text(),
+            'from' => 'Hà nội',
+            'to' => 'Hồ Chí Minh',
             'departure_date' => $this->faker->date(),
             'return_date' => $this->faker->date(),
             'amount_adults' => $this->faker->numberBetween(),
