@@ -121,6 +121,9 @@
                                                 </select>
                                         </fieldset>
                                     </div>
+                                    <div class="col-md-6" hidden>
+                                        <input type="number" name="status" value="0" hidden>
+                                    </div>
                                     <div class="col-md-12">
                                         <fieldset>
                                             <button type="submit" id="form-submit" class="btn">Tiến hành đặt vé</button>

@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('ve-may-bay-gia-re', [\App\Http\Controllers\BuyTicketController::class, 'index']);
 Route::post('submit', [\App\Http\Controllers\BuyTicketController::class, 'buyTicket'])->name('buy-ticket');
+Route::get('thong-ke', [\App\Http\Controllers\BuyTicketController::class, 'getAllTicket'])->name('get-all');
+Route::get('update/{id}', [\App\Http\Controllers\BuyTicketController::class, 'updateStatus'])->name('update');
+Route::get('delete/{id}', [\App\Http\Controllers\BuyTicketController::class, 'deleteTicket'])->name('delete');

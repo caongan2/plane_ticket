@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendEmail;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +33,8 @@ class BuyTicketController extends Controller
             'amount_adults' => $request->amount_adults,
             'amount_children_less_12' => $request->amount_children_less_12,
             'amount_children_less_2' => $request->amount_children_less_2,
-            'package' => $request->package
+            'package' => $request->package,
+            'status' => $request->status,
         ];
         DB::table('ticket')->insert($data);
         session()->flash('success', 'Tiến hành đặt vé thành công. Chúng tôi sẽ sớm liên lạc lại cho bạn');
@@ -52,5 +54,41 @@ class BuyTicketController extends Controller
         $user = 'caothuongngan@gmail.com';
         SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
         return redirect()->back();
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateStatus($id)
+    {
+        $ticket = $this->ticketQuery()->findOrFail($id);
+        $ticket->update(['status' => 1]);
+        return redirect()->route('get-all');
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deleteTicket($id)
+    {
+        $ticket = $this->ticketQuery()->findOrFail($id);
+        $ticket->delete();
+        return redirect()->route('get-all');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function getAllTicket()
+    {
+        $query = $this->ticketQuery()->orderByDesc('created_at')->get();
+         return view('get-all', compact('query'));
+    }
+
+    public function ticketQuery()
+    {
+        return Ticket::query();
     }
 }
