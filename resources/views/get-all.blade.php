@@ -22,6 +22,9 @@
                 </div>
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                    @if(request()->input('number_phone'))
+                    <a href="{{route('get-all')}}" class="btn btn-primary">Quay lại</a>
+                    @endif
                 </div>
             </div>
         </div>
