@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\SendEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class BuyTicketController extends Controller
 {
@@ -24,7 +25,7 @@ class BuyTicketController extends Controller
     {
         $data = [
             'user_name' => $request->user_name,
-            'number_phone' => $request->number_phone,
+            'number_phone' => Hash::make($request->number_phone),
             'from' => $request->from,
             'to' => $request->to,
             'departure_date' => $request->departure_date,
@@ -49,7 +50,7 @@ class BuyTicketController extends Controller
             'amount_children_less_2' => $request->amount_children_less_2,
             'package' => $request->package
         ];
-        $user = 'caothuongnguon@gmail.com';
+        $user = 'caothuongngan@gmail.com';
         SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
         return redirect()->back();
     }
