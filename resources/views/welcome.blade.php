@@ -227,11 +227,13 @@
     }
     .screen-pc{
         width: 100%;
+        margin: auto;
     }
     @media only screen and (max-width: 844px){
         .screen-mobile{
             width: 100%;
             height: auto;
+            margin: auto;
         }
     }
 </style>
