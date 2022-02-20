@@ -35,7 +35,7 @@ class BuyTicketController extends Controller
             'package' => $request->package
         ];
         DB::table('ticket')->insert($data);
-        session()->flash('success', 'Tiến hành đặt vé thành công.');
+        session()->flash('success', 'Tiến hành đặt vé thành công. Chúng tôi sẽ sớm liên lạc lại cho bạn');
         $message = [
             'content' => 'Thông tin khách hàng',
             'user_name' => $request->user_name,
