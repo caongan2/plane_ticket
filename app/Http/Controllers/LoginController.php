@@ -30,4 +30,13 @@ class LoginController extends Controller
             return redirect()->route('login');
         }
     }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->back();
+    }
 }

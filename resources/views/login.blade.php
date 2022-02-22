@@ -8,6 +8,9 @@
     <title>Login-page</title>
 </head>
 <body>
+@if(session()->has('login_error'))
+    <p class="form-control text-danger screen-mobile" style="background: #ecf0f3; color: white">Sai tài khoản hoặc mật khẩu</p>
+@endif
 <div class="wrapper">
     <div class="logo"> <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt=""> </div>
     <form class="p-3 mt-3" method="post" action="{{route('login_page')}}">

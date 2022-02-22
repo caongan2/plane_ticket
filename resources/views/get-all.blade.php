@@ -25,9 +25,11 @@
                     @if(request()->input('number_phone'))
                     <a href="{{route('get-all')}}" class="btn btn-primary">Quay lại</a>
                     @endif
-                </div>
-                <div class="col-md-2">
+                    @if(session()->has('login'))
                     <a href="{{route('login')}}" class="btn btn-primary">Login</a>
+                    @else
+                    <a href="{{route('logout')}}" class="btn btn-primary">Logout</a>
+                    @endif
                 </div>
             </div>
         </div>
