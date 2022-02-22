@@ -13,11 +13,11 @@
     <title>Thống kê lịch sử đặt vé</title>
 </head>
 <body>
-<div>
+<div class="top">
     <form action="{{route('search')}}" method="get">
-        <div class="container">
+        <div class="container" style="margin-left: 0">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 margin-top">
                     <input type="number" class="form-control" name="number_phone" placeholder="Nhập số điện thoại khách hàng...">
                 </div>
                 <div class="col-md-2">
@@ -25,6 +25,9 @@
                     @if(request()->input('number_phone'))
                     <a href="{{route('get-all')}}" class="btn btn-primary">Quay lại</a>
                     @endif
+                </div>
+                <div class="col-md-2">
+                    <a href="{{route('login')}}">Login</a>
                 </div>
             </div>
         </div>
@@ -46,7 +49,9 @@
         <th scope="col">Trẻ 2 tuổi</th>
         <th scope="col">Hành lý</th>
         <th scope="col">Trạng thái</th>
+        @if(session('login'))
         <th scope="col">Cập nhật</th>
+        @endif
     </tr>
     </thead>
     <tbody>
@@ -64,6 +69,7 @@
             <td>{{$item->amount_children_less_2}}</td>
             <td>{{$item->package}}</td>
             <td> @if($item->status == 0) Chưa xác nhận @elseif ($item->status == 1) Đã chốt vé @endif </td>
+            @if(session('login'))
             <td rowspan="1">
                 @if($item->status == 0)
                     <div class="container">
@@ -77,6 +83,7 @@
                         </div>
                     </div>
                 @endif </td>
+            @endif
         </tr>
     @endforeach
     </tbody>
@@ -84,6 +91,18 @@
 <style>
     .success {
         background: lightskyblue;
+    }
+
+    .top {
+        margin-top: 5%;
+        margin-bottom: 2%;
+    }
+
+    @media only screen and (max-width: 844px) {
+        .margin-top {
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
     }
 </style>
 

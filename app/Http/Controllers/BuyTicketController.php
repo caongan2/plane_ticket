@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendEmail;
+use App\Models\MailAdmin;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -51,8 +52,8 @@ class BuyTicketController extends Controller
             'amount_children_less_2' => $request->amount_children_less_2,
             'package' => $request->package
         ];
-        $user = 'caothuongnguon@gmail.com';
-        SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
+        $emails = MailAdmin::all();
+        SendEmail::dispatch($message, $emails)->delay(now()->addMinute(1));
         return redirect()->back();
     }
 
