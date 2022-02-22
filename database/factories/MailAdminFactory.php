@@ -17,7 +17,7 @@ class MailAdminFactory extends Factory
     public function definition()
     {
         return [
-            'mail' => 'caothuongnguon@gmail.com'
+            'mail' => 'buithiluong101091@gmail.com'
         ];
     }
 }
