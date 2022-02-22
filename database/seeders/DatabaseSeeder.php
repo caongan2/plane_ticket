@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MailAdmin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\Ticket::factory(20)->create();
+//         \App\Models\Ticket::factory(20)->create();
+        MailAdmin::factory()->create();
     }
 }
