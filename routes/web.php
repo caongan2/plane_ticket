@@ -17,6 +17,7 @@ Route::get('ve-may-bay-gia-re', [\App\Http\Controllers\BuyTicketController::clas
 Route::post('submit', [\App\Http\Controllers\BuyTicketController::class, 'buyTicket'])->name('buy-ticket');
 Route::get('search', [\App\Http\Controllers\BuyTicketController::class, 'search'])->name('search');
 Route::get('login', [\App\Http\Controllers\LoginController::class, 'viewLogin'])->name('login');
+Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 Route::post('login-page', [\App\Http\Controllers\LoginController::class, 'login'])->name('login_page');
 Route::get('thong-ke', [\App\Http\Controllers\BuyTicketController::class, 'getAllTicket'])->name('get-all');
 Route::get('update/{id}', [\App\Http\Controllers\BuyTicketController::class, 'updateStatus'])->name('update');
