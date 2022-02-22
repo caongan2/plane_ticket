@@ -27,7 +27,7 @@
                     @endif
                 </div>
                 <div class="col-md-2">
-                    <a href="{{route('login')}}">Login</a>
+                    <a href="{{route('login')}}" class="btn btn-primary">Login</a>
                 </div>
             </div>
         </div>
