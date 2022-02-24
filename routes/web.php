@@ -20,5 +20,5 @@ Route::get('login', [\App\Http\Controllers\LoginController::class, 'viewLogin'])
 Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 Route::post('login-page', [\App\Http\Controllers\LoginController::class, 'login'])->name('login_page');
 Route::get('thong-ke', [\App\Http\Controllers\BuyTicketController::class, 'getAllTicket'])->name('get-all');
-Route::get('update/{id}', [\App\Http\Controllers\BuyTicketController::class, 'updateStatus'])->name('update');
+Route::post('update/{id}', [\App\Http\Controllers\BuyTicketController::class, 'updateStatus'])->name('update');
 Route::get('delete/{id}', [\App\Http\Controllers\BuyTicketController::class, 'deleteTicket'])->name('delete');

@@ -25,7 +25,9 @@ return new class extends Migration
             $table->integer('amount_children_less_12')->nullable();
             $table->integer('amount_children_less_2')->nullable();
             $table->text('package')->nullable();
+            $table->text('price')->nullable();
             $table->integer('status')->nullable();
+            $table->integer('user_update')->nullable();
             $table->timestamps();
         });
     }

@@ -61,9 +61,14 @@ class BuyTicketController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateStatus($id)
+    public function updateStatus($id, Request $request)
     {
-        Ticket::where('id', $id)->update(['status' => 1]);
+        $data = [
+            'status' => 1,
+            'price' => $request->price,
+            'user_update' => auth()->id()
+        ];
+        Ticket::where('id', $id)->update($data);
         return redirect()->route('get-all');
     }
 
@@ -75,7 +80,7 @@ class BuyTicketController extends Controller
     {
         $ticket = $this->ticketQuery()->findOrFail($id);
         $ticket->delete();
-        return redirect()->route('get-all');
+        return response()->json(['message' => 'delete success'] );
     }
 
     public function search(Request $request)
@@ -91,8 +96,11 @@ class BuyTicketController extends Controller
      */
     public function getAllTicket()
     {
-        $query = DB::table('ticket')->orderByDesc('id')->get();
-         return view('get-all', compact('query'));
+        $query1 = DB::table('ticket')->where('status', 0)->orderByDesc('id')->get();
+        $query2 = DB::table('ticket')->where('status', 1)->orderByDesc('id')->get();
+        $revenue = DB::table('ticket')->where('status', 1)->sum('price');
+        $revenue_by_user = DB::table('ticket')->where('status', 1)->where('user_update', auth()->id())->sum('price');
+         return view('get-all', compact('query1', 'query2', 'revenue', 'revenue_by_user'));
     }
 
     public function ticketQuery()

@@ -17,7 +17,6 @@ class TicketFactory extends Factory
     public function definition()
     {
         $category = [1,2];
-        $status = [0,1];
         return [
             'user_name' => $this->faker->name(),
             'number_phone' => $this->faker->numberBetween(),
@@ -29,7 +28,7 @@ class TicketFactory extends Factory
             'amount_children_less_12' => $this->faker->randomElement($category),
             'amount_children_less_2' => $this->faker->randomElement($category),
             'package' => $this->faker->numberBetween(),
-            'status' => $this->faker->randomElement($status),
+            'status' => 0,
         ];
     }
 }
