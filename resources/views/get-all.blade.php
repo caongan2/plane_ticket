@@ -80,8 +80,8 @@
             </div>
         @endif
         @if(session()->has('login'))
-        <button class="col-md-2 btn" style="background: wheat; display: none" id="revenue_by_user">Doanh thu từ {{auth()->user()->name}}: {{number_format($revenue_by_user)}} - vnd</button>
-        <button class="col-md-2 btn" style="background: wheat; display: none" id="revenue"> Tổng doanh thu: {{number_format($revenue)}} - vnd</button>
+        <button class="col-md-2 btn" style="background: wheat; display: none" id="revenue_by_user">Doanh thu từ {{auth()->user()->name}}: {{number_format($total2)}} - vnd</button>
+        <button class="col-md-2 btn" style="background: wheat; display: none" id="revenue"> Tổng doanh thu: {{number_format($total1)}} - vnd</button>
         @endif
     </div>
 </div>
