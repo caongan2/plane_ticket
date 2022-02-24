@@ -21,7 +21,7 @@ class UserFactory extends Factory
         return [
             'name' => 'Cao Nguồn',
             'login_id' => 'caonguon',
-            'email' => 'caothuongnguon@gmail.com',
+            'email' => 'caothuongngan@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('123456'), // password
             'remember_token' => Str::random(10),

@@ -24,13 +24,15 @@
                 </div>
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                </div>
+                <div class="col-md-2">
                     @if(request()->input('number_phone'))
-                    <a href="{{route('get-all')}}" class="btn btn-primary">Quay lại</a>
+                        <a href="{{route('get-all')}}" class="btn btn-primary">Quay lại</a>
                     @endif
                     @if(!session()->has('login'))
-                    <a href="{{route('login')}}" class="btn btn-primary">Login</a>
+                        <a href="{{route('login')}}" class="btn btn-primary">Login</a>
                     @else
-                    <a href="{{route('logout')}}" class="btn btn-primary">Logout</a>
+                        <a href="{{route('logout')}}" class="btn btn-primary">Logout</a>
                     @endif
                 </div>
             </div>
@@ -38,62 +40,62 @@
 
     </form>
 </div>
-<div class="container">
-    <div>
-        <button class="col-md-2 btn" style="background: #b2dba1" id="cancel">Vé chưa xác nhận</button>
-        @if(session()->has('login'))
-        <button class="col-md-2 btn" style="background: #C4E5F3" id="success">Vé đã chốt</button>
-        @else
+<div style="padding: 0 !important;">
+    @if(session()->has('login'))
+        <div class="col-md-6">
+            Doanh thu từ {{auth()->user()->name}}: {{number_format($total2)}} - vnd
+        </div>
+        <div class="col-md-6">
+            Tổng doanh thu: {{number_format($total1)}} - vnd
+        </div>
+    @endif
+    <a class="col-md-2 btn" style="background: #b2dba1" id="cancel">Vé chưa xác nhận</a>
+    @if(session()->has('login'))
+        <a class="col-md-2 btn" style="background: #C4E5F3" id="success">Vé đã chốt</a>
+    @else
 
-            <button class="col-md-2 btn" style="background: #C4E5F3" data-bs-toggle="modal" data-bs-target="#ModalForm">
-                Vé đã chốt
-            </button>
+        <a class="col-md-2 btn" style="background: #C4E5F3" data-bs-toggle="modal" data-bs-target="#ModalForm">
+            Vé đã chốt
+        </a>
 
-            <!-- Modal Form -->
-            <div class="modal fde" id="ModalForm" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <!-- Login Form -->
-                        <form method="post" action="{{route('login_page')}}">
-                            @csrf
-                            <div class="modal-header">
-                                <h5 class="modal-title">Đăng nhập để tiếp tục</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                                <div class="mb-3">
-                                    <label for="Username">Username<span class="text-danger">*</span></label>
-                                    <input type="text" name="login_id" style="background: #C4E5F3" class="form-control" id="Username" placeholder="Enter Username">
-                                </div>
+        <!-- Modal Form -->
+        <div class="modal fde" id="ModalForm" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- Login Form -->
+                    <form method="post" action="{{route('login_page')}}">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title">Đăng nhập để tiếp tục</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Username">Username<span class="text-danger">*</span></label>
+                            <input type="text" name="login_id" style="background: #C4E5F3" class="form-control" id="Username" placeholder="Enter Username">
+                        </div>
 
-                                <div class="mb-3">
-                                    <label for="Password">Password<span class="text-danger">*</span></label>
-                                    <input type="password" style="background: #C4E5F3" name="password" class="form-control" id="Password" placeholder="Enter Password">
-                                </div>
-                            <div class="modal-body">
-                            </div>
-                            <div class="modal-footer pt-4">
-                                <button type="submit" class="btn btn-success mx-auto w-100">Login</button>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="mb-3">
+                            <label for="Password">Password<span class="text-danger">*</span></label>
+                            <input type="password" style="background: #C4E5F3" name="password" class="form-control" id="Password" placeholder="Enter Password">
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer pt-4">
+                            <button type="submit" class="btn btn-success mx-auto w-100">Login</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        @endif
-        @if(session()->has('login'))
-        <div class="row">
-            <div class="col-md-6">
-                <button class="col-md-2 btn" style="background: wheat; display: none" id="revenue_by_user">Doanh thu từ {{auth()->user()->name}}: {{number_format($total2)}} - vnd</button>
-            </div>
-            <div class="col-md-6">
-                <button class="col-md-2 btn" style="background: wheat; display: none" id="revenue"> Tổng doanh thu: {{number_format($total1)}} - vnd</button>
-            </div>
         </div>
-        @endif
-    </div>
+    @endif
+    @if(session()->has('login'))
+        <div class="row">
+        </div>
+    @endif
 </div>
-<ul>
-    <li style="background-color: rgb(182, 182, 182); display: @if(session()->has('login')) none @else block @endif;" id="table1">
-        <table class="table" style="background: #b2dba1; width: 100%; margin-left: 0">
+<ul style="padding: 0 !important;">
+    <li style=" display: @if(session()->has('login')) none @else block @endif;" id="table1">
+        <table class="table" style="width: 100%; margin-left: 0">
             <thead>
             <tr class="text-center">
                 <th scope="col">STT</th>
@@ -171,7 +173,7 @@
             </tbody>
         </table>
     </li>
-    <li style="background-color: #C4E5F3; display:@if(session()->has('login')) block @else none @endif;;" id="table2">
+    <li style="display:@if(session()->has('login')) block @else none @endif;;" id="table2">
         <table class="table" style="margin-left: 0">
             <thead>
             <tr class="text-center">
@@ -215,14 +217,15 @@
     .top {
         margin-top: 5%;
         margin-bottom: 2%;
+        margin-left: -1%;
     }
 
-    /*@media only screen and (max-width: 844px) {*/
-    /*    .margin-top {*/
-    /*        margin-top: 1%;*/
-    /*        margin-bottom: 1%;*/
-    /*    }*/
-    /*}*/
+    @media only screen and (max-width: 844px) {
+        .top {
+            margin-left: -3%;
+        }
+    }
+
 </style>
 <script>
 
@@ -235,14 +238,10 @@
         $('#cancel').on('click',function () {
             document.getElementById('table1').style.display = 'block'
             document.getElementById('table2').style.display = 'none'
-            document.getElementById('revenue').style.display = 'none'
-            document.getElementById('revenue_by_user').style.display = 'none'
         })
         $('#success').on('click',function () {
             document.getElementById('table1').style.display = 'none'
             document.getElementById('table2').style.display = 'block'
-            document.getElementById('revenue').style.display = 'block'
-            document.getElementById('revenue_by_user').style.display = 'block'
         })
 
 
