@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\BuyTicketController::class, 'index']);
+Route::get('', [\App\Http\Controllers\BuyTicketController::class, 'index']);
 Route::post('submit', [\App\Http\Controllers\BuyTicketController::class, 'buyTicket'])->name('buy-ticket');
 Route::get('search', [\App\Http\Controllers\BuyTicketController::class, 'search'])->name('search');
 Route::get('login', [\App\Http\Controllers\LoginController::class, 'viewLogin'])->name('login');
