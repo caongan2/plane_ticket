@@ -1,4 +1,4 @@
-/* 
+/*
 
 Template 2093 Flight
 
@@ -155,7 +155,7 @@ p {
 
 
 .banner {
-	background-image: url(../img/banner-bg.jpg);
+	background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fpano-verschluss.com%2Fbackground-dep%2F&psig=AOvVaw2vNr6X0pVSUEvQ8MjRbfrw&ust=1645804475921000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMDQmsvZmPYCFQAAAAAdAAAAABAJ);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -351,7 +351,7 @@ p {
 
 .weather-item .weather-icon {
 	display: inline-block;
-	margin-bottom: 40px;	
+	margin-bottom: 40px;
 	width: 64px;
 	height: 64px;
 }
@@ -781,7 +781,7 @@ footer .social-icons li a:hover {
 footer p {
 	color: #fff;
 	font-size: 12px;
-	margin-top: 40px; 	
+	margin-top: 40px;
 }
 
 footer p em {
@@ -972,7 +972,7 @@ footer p em {
 	}
 
 	.service-item {
-		margin: 30px 0px; 
+		margin: 30px 0px;
 	}
 
 	.page-heading .logo {
@@ -1005,13 +1005,13 @@ footer p em {
 	footer ul li {
 		margin-bottom: 10px!important;
 	}
-		
+
 }
 
 @media (max-width: 768px) {
 
 
-	
+
 }
 
 @media (max-width: 480px) {
