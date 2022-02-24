@@ -11,7 +11,7 @@
         content="width=device-width, initial-scale=1"
     />
     <title>Thống kê lịch sử đặt vé</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
 <body>
