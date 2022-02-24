@@ -98,8 +98,8 @@ class BuyTicketController extends Controller
     {
         $query1 = DB::table('ticket')->where('status', 0)->orderByDesc('id')->get();
         $query2 = DB::table('ticket')->where('status', 1)->orderByDesc('id')->get();
-        $revenue = Ticket::where('status', 1)->sum('price');
-        $revenue_by_user = Ticket::where('status', 1)->where('user_update', auth()->id())->sum('price');
+        $revenue = DB::table('ticket')->where('status', 1)->get()->count();
+        $revenue_by_user = DB::table('ticket')->where('status', 1)->where('user_update', auth()->id())->get()->count();
          return view('get-all', compact('query1', 'query2', 'revenue', 'revenue_by_user'));
     }
 
