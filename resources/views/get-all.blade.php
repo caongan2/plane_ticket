@@ -336,7 +336,7 @@
 
         .modal {
             background-color: #cce5ed;
-            margin-top: -80%;
+            /*margin-top: -80%;*/
             position: fixed;
             top: 0;
             left: 0;
