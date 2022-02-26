@@ -114,18 +114,18 @@
                         <form method="post" action="{{route('login_page')}}">
                             @csrf
                             <div class="modal-header">
-                                <h5 class="modal-title">Đăng nhập để tiếp tục</h5>
+                                <h5 class="modal-title" style="color: black">Đăng nhập để tiếp tục</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="Username">Username<span class="text-danger">*</span></label>
-                                    <input type="text" name="login_id" style="background: #C4E5F3" class="form-control" id="Username">
+                                    <label for="Username"><span class="text-danger"></span></label>
+                                    <input type="text" name="login_id" style="background: #C4E5F3" class="form-control" id="Username" placeholder="Username">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="Password">Password<span class="text-danger">*</span></label>
-                                    <input type="password" style="background: #C4E5F3" name="password" class="form-control" id="Password">
+                                    <label for="Password"><span class="text-danger"></span></label>
+                                    <input type="password" style="background: #C4E5F3" name="password" class="form-control" id="Password" placeholder="Password">
                                 </div>
                             </div>
                             <div class="modal-footer pt-4">
@@ -144,7 +144,7 @@
     @endif
 </div>
 <ul style="padding: 0 !important;">
-    <li style="" id="table1">
+    <li style="display: block" id="table1">
         <table class="table" style="width: 100%; margin-left: 0; background: #b2dba1">
             <thead>
             <tr class="text-center">
@@ -223,7 +223,7 @@
             </tbody>
         </table>
     </li>
-    <li style="@if(!session()->has('login')) display: none @endif" id="table2">
+    <li style="display: none" id="table2">
         <table class="table" style="margin-left: 0; background: #C4E5F3">
             <thead>
             <tr class="text-center">
@@ -333,22 +333,6 @@
           text-align: center;
       }
     @media only screen and (max-width: 844px) {
-
-        .modal {
-            background-color: #cce5ed;
-            /*margin-top: -80%;*/
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1055;
-            display: none;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
-            outline: 0;
-        }
-
         .table {
             width: 100%;
         }
