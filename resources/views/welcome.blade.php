@@ -50,7 +50,7 @@
                     <div id="tab1">
                         <div class="submit-form">
                             <h4>Thông tin đặt vé:</h4>
-                            <form id="form-submit" action="{{route('buy-ticket')}}" method="post">
+                            <form id="form-submit" action="{{ route('buy-ticket') }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <fieldset>
-                                            <button type="submit" id="form-submit" class="btn">Tiến hành đặt vé</button>
+                                            <button type="submit" id="form-submit" class="btn">Tiến Hành Kiểm Tra Giá Vé</button>
                                         </fieldset>
                                     </div>
                                 </div>

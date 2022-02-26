@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('', [\App\Http\Controllers\BuyTicketController::class, 'index']);
-Route::post('submit', [\App\Http\Controllers\BuyTicketController::class, 'buyTicket'])->name('buy-ticket');
-Route::get('search', [\App\Http\Controllers\BuyTicketController::class, 'search'])->name('search');
-Route::get('login', [\App\Http\Controllers\LoginController::class, 'viewLogin'])->name('login');
-Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
-Route::post('login-page', [\App\Http\Controllers\LoginController::class, 'login'])->name('login_page');
-Route::get('thong-ke', [\App\Http\Controllers\BuyTicketController::class, 'getAllTicket'])->name('get-all');
-Route::post('update/{id}', [\App\Http\Controllers\BuyTicketController::class, 'updateStatus'])->name('update');
-Route::get('delete/{id}', [\App\Http\Controllers\BuyTicketController::class, 'deleteTicket'])->name('delete');
+Route::post('/buy-ticket', [\App\Http\Controllers\BuyTicketController::class, 'buyTicket'])->name('buy-ticket');
+Route::post('/add-ticket', [\App\Http\Controllers\BuyTicketController::class, 'addNewTicket'])->name('add-ticket');
+Route::get('/search', [\App\Http\Controllers\BuyTicketController::class, 'search'])->name('search');
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'viewLogin'])->name('login');
+Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::post('/login-page', [\App\Http\Controllers\LoginController::class, 'login'])->name('login_page');
+Route::get('/thong-ke', [\App\Http\Controllers\BuyTicketController::class, 'getAllTicket'])->name('get-all');
+Route::post('/update/{id}', [\App\Http\Controllers\BuyTicketController::class, 'updateStatus'])->name('update');
+Route::get('/delete/{id}', [\App\Http\Controllers\BuyTicketController::class, 'deleteTicket'])->name('delete');

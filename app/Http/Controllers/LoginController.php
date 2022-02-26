@@ -38,6 +38,7 @@ class LoginController extends Controller
     {
         Auth::logout();
         session()->forget('login');
+        session()->forget('different');
         return redirect()->back();
     }
 }

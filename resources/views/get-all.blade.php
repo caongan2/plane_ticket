@@ -42,16 +42,51 @@
 </div>
 <div style="padding: 0 !important;">
     @if(session()->has('login'))
-        <div class="col-md-6">
+        <div class="col-md-4">
             Doanh thu từ {{auth()->user()->name}}: {{number_format($total2)}} - vnd
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             Tổng doanh thu: {{number_format($total1)}} - vnd
         </div>
     @endif
     <a class="col-md-2 btn" style="background: #b2dba1" id="cancel">Vé chưa xác nhận</a>
     @if(session()->has('login'))
         <a class="col-md-2 btn" style="background: #C4E5F3" id="success">Vé đã chốt</a>
+        <a class="col-md-2 btn" style="background: #d0c4f3" id="different">Vé từ nguồn khác</a>
+        <a class="col-md-2 btn" style="background: #f0f3c4" data-bs-toggle="modal" data-bs-target="#ModalForm">Thêm vé</a>
+            <!-- Modal Form -->
+            <div class="modal fde" id="ModalForm" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <!-- Login Form -->
+                        <form method="post" action="{{route('add-ticket')}}">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title">Thêm vé từ các nguồn khác</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="Username">Nơi đi<span class="text-danger">*</span></label>
+                                    <input type="text" name="from" style="background: #C4E5F3" class="form-control" id="Username">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Password">Nơi đến<span class="text-danger">*</span></label>
+                                    <input type="text" style="background: #C4E5F3" name="to" class="form-control" id="Password">
+                                </div><div class="mb-3">
+                                    <label for="Price">Giá vé<span class="text-danger">*</span></label>
+                                    <input type="number" style="background: #C4E5F3" name="price" class="form-control" id="price">
+                                </div>
+                            </div>
+                            <div class="modal-footer pt-4">
+                                <button type="submit" class="btn btn-success mx-auto w-100">Thêm vé</button>
+                                <button type="button" class="btn btn-primary mx-auto w-100" data-bs-dismiss="modal" aria-label="Close">Huỷ bỏ</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
     @else
 
         <a class="col-md-2 btn" style="background: #C4E5F3" data-bs-toggle="modal" data-bs-target="#ModalForm">
@@ -94,7 +129,7 @@
     @endif
 </div>
 <ul style="padding: 0 !important;">
-    <li style=" display: @if(session()->has('login')) none @else block @endif;" id="table1">
+    <li style="" id="table1">
         <table class="table" style="width: 100%; margin-left: 0">
             <thead>
             <tr class="text-center">
@@ -173,7 +208,7 @@
             </tbody>
         </table>
     </li>
-    <li style="display:@if(session()->has('login')) block @else none @endif;;" id="table2">
+    <li style="" id="table2">
         <table class="table" style="margin-left: 0">
             <thead>
             <tr class="text-center">
@@ -211,6 +246,28 @@
             </tbody>
         </table>
     </li>
+    <li style="display: @if(session()->has('diffrent')) block @else none @endif" id="table3">
+        <table class="table" style="margin-left: 0">
+            <thead>
+            <tr class="text-center">
+                <th scope="col">STT</th>
+                <th scope="col">Nơi đi</th>
+                <th scope="col">Nơi đến</th>
+                <th scope="col">Giá</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($query3 as $key => $item)
+                <tr class="text-center" id="ticket-{{$item->id}}">
+                    <th scope="row">{{$key + 1}}</th>
+                    <td>{{$item->from}}</td>
+                    <td>{{$item->to}}</td>
+                    <td>{{$item->price}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </li>
 </ul>
 
 <style>
@@ -238,10 +295,17 @@
         $('#cancel').on('click',function () {
             document.getElementById('table1').style.display = 'block'
             document.getElementById('table2').style.display = 'none'
+            document.getElementById('table3').style.display = 'none'
         })
         $('#success').on('click',function () {
             document.getElementById('table1').style.display = 'none'
             document.getElementById('table2').style.display = 'block'
+            document.getElementById('table3').style.display = 'none'
+        })
+        $('#different').on('click', function () {
+            document.getElementById('table1').style.display = 'none'
+            document.getElementById('table2').style.display = 'none'
+            document.getElementById('table3').style.display = 'block'
         })
 
 
