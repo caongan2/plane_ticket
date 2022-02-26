@@ -17,15 +17,15 @@
 <body>
 <div class="top">
     <form action="{{route('search')}}" method="get">
-        <div class="container" style="margin-left: 0">
-            <div class="row">
-                <div class="col-md-6 margin-top">
-                    <input type="number" class="form-control" name="number_phone" placeholder="Nhập số điện thoại khách hàng...">
-                </div>
-                <div class="col-md-2">
+        <table>
+            <tr>
+                <td colspan="3">
+                    <input type="number" class="form-control" name="number_phone" placeholder="Nhập số điện thoại...">
+                </td>
+                <td>
                     <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-                </div>
-                <div class="col-md-2">
+                </td>
+                <td>
                     @if(request()->input('number_phone'))
                         <a href="{{route('get-all')}}" class="btn btn-primary">Quay lại</a>
                     @endif
@@ -34,12 +34,12 @@
                     @else
                         <a href="{{route('logout')}}" class="btn btn-primary">Logout</a>
                     @endif
-                </div>
-            </div>
-        </div>
-
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
+
 <div style="padding: 0 !important;">
     @if(session()->has('login'))
         <div class="col-md-4">
@@ -49,80 +49,95 @@
             Tổng doanh thu: {{number_format($total1)}} - vnd
         </div>
     @endif
-    <a class="col-md-2 btn" style="background: #b2dba1" id="cancel">Vé chưa xác nhận</a>
-    @if(session()->has('login'))
-        <a class="col-md-2 btn" style="background: #C4E5F3" id="success">Vé đã chốt</a>
-        <a class="col-md-2 btn" style="background: #d0c4f3" id="different">Vé từ nguồn khác</a>
-        <a class="col-md-2 btn" style="background: #f0f3c4" data-bs-toggle="modal" data-bs-target="#ModalForm">Thêm vé</a>
+
+        <ul>
+            <li class="tab1">
+                <a class="col-md-2 btn" style="background: #b2dba1; width: 103%" id="cancel">Vé chưa xác nhận</a>
+            </li>
+            @if(session()->has('login'))
+            <li class="tab2">
+                <a class="col-md-2 btn" style="background: #C4E5F3; width: 103%" id="success">Vé đã chốt</a>
+            </li>
+            <li class="tab3">
+                <a class="col-md-2 btn" style="background: #d0c4f3; width: 103%" id="different">Vé từ nguồn khác</a>
+            </li>
+            <li class="tab4">
+                <a class="col-md-2 btn" style="background: #f0f3c4; width: 103%" data-bs-toggle="modal" data-bs-target="#ModalForm">Thêm vé</a>
+                <!-- Modal Form -->
+                <div class="modal fde" id="ModalForm" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <!-- Login Form -->
+                            <form method="post" action="{{route('add-ticket')}}">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color: black">Thêm vé từ các nguồn khác</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="Username"><span class="text-danger"></span></label>
+                                        <input type="text" name="from" style="background: #C4E5F3" class="form-control" id="Username" placeholder="Nơi đi">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="Password"><span class="text-danger"></span></label>
+                                        <input type="text" style="background: #C4E5F3" name="to" class="form-control" id="Password" placeholder="Nơi đến">
+                                    </div><div class="mb-3">
+                                        <label for="Price"><span class="text-danger"></span></label>
+                                        <input type="number" style="background: #C4E5F3" name="price" class="form-control" id="price" placeholder="Giá vé">
+                                    </div>
+                                </div>
+                                <div class="modal-footer pt-4">
+                                    <button type="submit" class="btn btn-success mx-auto w-100">Thêm vé</button>
+                                    <button type="button" class="btn btn-primary mx-auto w-100" data-bs-dismiss="modal" aria-label="Close">Huỷ bỏ</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+    @else
+
+        <li class="tab2">
+            <a class="col-md-2 btn" style="background: #C4E5F3; width: 103%" data-bs-toggle="modal" data-bs-target="#ModalForm">
+                Vé đã chốt
+            </a>
+
             <!-- Modal Form -->
             <div class="modal fde" id="ModalForm" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <!-- Login Form -->
-                        <form method="post" action="{{route('add-ticket')}}">
+                        <form method="post" action="{{route('login_page')}}">
                             @csrf
                             <div class="modal-header">
-                                <h5 class="modal-title">Thêm vé từ các nguồn khác</h5>
+                                <h5 class="modal-title">Đăng nhập để tiếp tục</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="Username">Nơi đi<span class="text-danger">*</span></label>
-                                    <input type="text" name="from" style="background: #C4E5F3" class="form-control" id="Username">
+                                    <label for="Username">Username<span class="text-danger">*</span></label>
+                                    <input type="text" name="login_id" style="background: #C4E5F3" class="form-control" id="Username">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="Password">Nơi đến<span class="text-danger">*</span></label>
-                                    <input type="text" style="background: #C4E5F3" name="to" class="form-control" id="Password">
-                                </div><div class="mb-3">
-                                    <label for="Price">Giá vé<span class="text-danger">*</span></label>
-                                    <input type="number" style="background: #C4E5F3" name="price" class="form-control" id="price">
+                                    <label for="Password">Password<span class="text-danger">*</span></label>
+                                    <input type="password" style="background: #C4E5F3" name="password" class="form-control" id="Password">
                                 </div>
                             </div>
                             <div class="modal-footer pt-4">
-                                <button type="submit" class="btn btn-success mx-auto w-100">Thêm vé</button>
-                                <button type="button" class="btn btn-primary mx-auto w-100" data-bs-dismiss="modal" aria-label="Close">Huỷ bỏ</button>
+                                <button type="submit" class="btn btn-success mx-auto w-100">Login</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-    @else
-
-        <a class="col-md-2 btn" style="background: #C4E5F3" data-bs-toggle="modal" data-bs-target="#ModalForm">
-            Vé đã chốt
-        </a>
-
-        <!-- Modal Form -->
-        <div class="modal fde" id="ModalForm" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <!-- Login Form -->
-                    <form method="post" action="{{route('login_page')}}">
-                        @csrf
-                        <div class="modal-header">
-                            <h5 class="modal-title">Đăng nhập để tiếp tục</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Username">Username<span class="text-danger">*</span></label>
-                            <input type="text" name="login_id" style="background: #C4E5F3" class="form-control" id="Username" placeholder="Enter Username">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="Password">Password<span class="text-danger">*</span></label>
-                            <input type="password" style="background: #C4E5F3" name="password" class="form-control" id="Password" placeholder="Enter Password">
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer pt-4">
-                            <button type="submit" class="btn btn-success mx-auto w-100">Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        </li>
     @endif
+        </ul>
     @if(session()->has('login'))
         <div class="row">
         </div>
@@ -130,7 +145,7 @@
 </div>
 <ul style="padding: 0 !important;">
     <li style="" id="table1">
-        <table class="table" style="width: 100%; margin-left: 0">
+        <table class="table" style="width: 100%; margin-left: 0; background: #b2dba1">
             <thead>
             <tr class="text-center">
                 <th scope="col">STT</th>
@@ -208,8 +223,8 @@
             </tbody>
         </table>
     </li>
-    <li style="" id="table2">
-        <table class="table" style="margin-left: 0">
+    <li style="@if(!session()->has('login')) display: none @endif" id="table2">
+        <table class="table" style="margin-left: 0; background: #C4E5F3">
             <thead>
             <tr class="text-center">
                 <th scope="col">STT</th>
@@ -240,14 +255,14 @@
                     <td>{{$item->amount_children_less_12}}</td>
                     <td>{{$item->amount_children_less_2}}</td>
                     <td>{{$item->package}}</td>
-                    <td>{{$item->price}}</td>
+                    <td>{{number_format($item->price)}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </li>
     <li style="display: @if(session()->has('diffrent')) block @else none @endif" id="table3">
-        <table class="table" style="margin-left: 0">
+        <table class="table" style="margin-left: 0; background: #d0c4f3">
             <thead>
             <tr class="text-center">
                 <th scope="col">STT</th>
@@ -262,7 +277,7 @@
                     <th scope="row">{{$key + 1}}</th>
                     <td>{{$item->from}}</td>
                     <td>{{$item->to}}</td>
-                    <td>{{$item->price}}</td>
+                    <td>{{number_format($item->price)}}</td>
                 </tr>
             @endforeach
             </tbody>
@@ -277,10 +292,111 @@
         margin-left: -1%;
     }
 
+    .tab1 {
+        background-color: #b2dba1;
+        padding: 15px;
+        float: left;
+        margin-right: 10px;
+        color: #FFFFFF;
+        font-size: 100%;
+        width: 180px;
+        text-align: center;
+    }
+
+    .tab2 {
+        background-color: #C4E5F3;
+        padding: 15px;
+        float: left;
+        margin-right: 10px;
+        color: #FFFFFF;
+        font-size: 100%;
+        width: 180px;
+        text-align: center;
+    }
+    .tab3 {
+         background-color: #d0c4f3;
+         padding: 15px;
+         float: left;
+         margin-right: 10px;
+         color: #FFFFFF;
+         font-size: 100%;
+         width: 180px;
+         text-align: center;
+     }.tab4 {
+          background-color: #f0f3c4;
+          padding: 15px;
+          float: left;
+          margin-right: 10px;
+          color: #FFFFFF;
+          font-size: 100%;
+          width: 180px;
+          text-align: center;
+      }
     @media only screen and (max-width: 844px) {
+
+        .modal {
+            background-color: #cce5ed;
+            margin-top: -80%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1055;
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            outline: 0;
+        }
+
+        .table {
+            width: 100%;
+        }
         .top {
             margin-left: -3%;
         }
+
+        .tab1 {
+            background-color: #b2dba1;
+            padding: 3%;
+            float: left;
+            margin-left: -6%;
+            color: #FFFFFF;
+            font-size: 100%;
+            width: 23%;
+            text-align: center;
+        }
+
+        .tab2 {
+            margin-top: 0%;
+            background-color: #C4E5F3;
+            float: right;
+            margin-right: 4%;
+            color: #FFFFFF;
+            font-size: 100%;
+            width: 23%;
+            text-align: center;
+            padding-bottom: 8.5%;
+        }
+        .tab3 {
+            background-color: #d0c4f3;
+            padding: 15px;
+            float: left;
+            margin-right: 10px;
+            color: #FFFFFF;
+            font-size: 100%;
+            width: 180px;
+            text-align: center;
+        }.tab4 {
+             background-color: #f0f3c4;
+             padding: 15px;
+             float: left;
+             margin-right: 10px;
+             color: #FFFFFF;
+             font-size: 100%;
+             width: 180px;
+             text-align: center;
+         }
     }
 
 </style>
